@@ -32,14 +32,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setupuiviews();
-
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                send.setText("WAIT");
+                waity();
                 factor();
+
+//                send.setText("TRY1");
                 if(h == 1){
-//                    send.setText("TRY");
                     one.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                             check(u);
                         }
                     });
+//                    send.setText("TRY2");
                 }
             }
         });
@@ -79,12 +80,17 @@ public class MainActivity extends AppCompatActivity {
         res = (TextView)findViewById(R.id.result);
     }
 
+    private void waity(){
+        send.setText("WAIT");
+    }
+
     private void factor() {
         res.setText("Choose the option");
         one.setBackgroundColor(Color.argb(255,215,214,214));
         two.setBackgroundColor(Color.argb(255,215,214,214));
         three.setBackgroundColor(Color.argb(255,215,214,214));
         long number = Long.parseLong(info.getText().toString());
+//        send.setText("TRY3");
         if(info.getText().toString().equals(null))
             number = -1;
 //        int arrnum;
@@ -113,13 +119,16 @@ public class MainActivity extends AppCompatActivity {
             two.setText("Option 2");
             three.setText("Option 3");
         }
+
         else{
+            if(number > 1000000007)
+//                send.setText("WAIT");
             h = 1;
             r = 1 + (int) (new Random().nextFloat() * (3 - 1));
             int r1 = (int) (new Random().nextFloat() * (2));
             boolean j = true;
             long numsq = (long)Math.sqrt(number);
-            send.setText("WAIT");
+
             num1 = 1 + random(numsq - 1);
             long l;
             long m;
@@ -212,6 +221,7 @@ public class MainActivity extends AppCompatActivity {
             }
             three.setText(String.valueOf(num3));
         }
+//        send.setText("TRY4");
     }
 
     private long random(long k){
@@ -219,18 +229,17 @@ public class MainActivity extends AppCompatActivity {
         return generatedLong;
     }
 
-    private void check(int u){
-        if(u == r && h == 1){
+    private void check(int u) {
+        if (u == r && h == 1) {
             res.setText("CORRECT");
-            if(u == 1)
-                one.setBackgroundColor(Color.argb(255,9,154,24));
-            else if(u == 2)
-                two.setBackgroundColor(Color.argb(255,9,154,24));
+            if (u == 1)
+                one.setBackgroundColor(Color.argb(255, 9, 154, 24));
+            else if (u == 2)
+                two.setBackgroundColor(Color.argb(255, 9, 154, 24));
             else
-                three.setBackgroundColor(Color.argb(255,9,154,24));
-        }
-        else{
-            if(h == 1) {
+                three.setBackgroundColor(Color.argb(255, 9, 154, 24));
+        } else {
+            if (h == 1) {
                 if (r == 1) {
                     res.setText("INCORRECT\nCorrect answer-" + String.valueOf(num1));
                     one.setBackgroundColor(Color.argb(255, 9, 154, 24));
@@ -250,4 +259,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+
 }
